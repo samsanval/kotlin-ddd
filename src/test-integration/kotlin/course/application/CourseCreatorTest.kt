@@ -16,47 +16,47 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class CourseCreatorTest : BaseTest() {
-	private lateinit var courseRepository: CourseRepository
-	private lateinit var courseCreator: CourseCreator
+    private lateinit var courseRepository: CourseRepository
+    private lateinit var courseCreator: CourseCreator
 
-	@BeforeEach
-	fun setUp() {
-		courseRepository = mockk(relaxUnitFun = true)
-		courseCreator = CourseCreator(courseRepository)
-	}
+    @BeforeEach
+    fun setUp() {
+        courseRepository = mockk(relaxUnitFun = true)
+        courseCreator = CourseCreator(courseRepository)
+    }
 
-	@Test
-	fun `should create a course successfully`() {
+    @Test
+    fun `should create a course successfully`() {
 
-		courseCreator.create(id, name)
+        courseCreator.create(id, name)
 
-		thenTheCourseShouldBeSaved()
-	}
+        thenTheCourseShouldBeSaved()
+    }
 
-	@Test
-	fun `should fail with invalid id`() {
+    @Test
+    fun `should fail with invalid id`() {
 
-		assertThrows<InvalidCourseId> { courseCreator.create("Invalid", name) }
-	}
+        assertThrows<InvalidCourseId> { courseCreator.create("Invalid", name) }
+    }
 
-	@Test
-	fun `should fail with invalid name`() {
+    @Test
+    fun `should fail with invalid name`() {
 
-		assertThrows<InvalidCourseName> { courseCreator.create(id, "    ") }
-	}
+        assertThrows<InvalidCourseName> { courseCreator.create(id, "    ") }
+    }
 
-	private fun thenTheCourseShouldBeSaved() {
-		verify { courseRepository.save(
-					Course(
-							id = CourseId(UUID.fromString(id)),
-							name = CourseName(name)
-					)
-			)
-		}
-	}
+    private fun thenTheCourseShouldBeSaved() {
+        verify { courseRepository.save(
+                    Course(
+                            id = CourseId(UUID.fromString(id)),
+                            name = CourseName(name)
+                    )
+            )
+        }
+    }
 
-	companion object {
-		private const val id = "caebae03-3ee9-4aef-b041-21a400fa1bb7"
-		private const val name = "Kotlin Hexagonal Architecture Api Course"
-	}
+    companion object {
+        private const val id = "caebae03-3ee9-4aef-b041-21a400fa1bb7"
+        private const val name = "Kotlin Hexagonal Architecture Api Course"
+    }
 }
