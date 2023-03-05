@@ -20,15 +20,16 @@ class AddCourseController(private val courseHandler: CreateCourseHandler) {
             val command = CreateCourseCommand(requestBody.id, requestBody.name)
             courseHandler(command)
             ResponseEntity.ok().body("")
-        } catch(exception: Throwable) {
+        } catch (exception: Throwable) {
             when (exception) {
                 is InvalidCourseName,
-                    is InvalidCourseId -> ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body(exception.message)
+                is InvalidCourseId -> ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(exception.message)
+
                 else -> ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Something went bad")
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body("Something went bad")
             }
         }
     }

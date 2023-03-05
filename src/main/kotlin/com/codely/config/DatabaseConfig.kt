@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class DatabaseConfig {
-	@Bean
-	fun courseRepository() = InMemoryCourseRepository()
+    @Bean
+    fun courseRepository() = InMemoryCourseRepository()
 }
