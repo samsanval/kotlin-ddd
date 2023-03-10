@@ -47,6 +47,7 @@ dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.9.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework:spring-jdbc:5.3.22")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
