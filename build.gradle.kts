@@ -48,6 +48,8 @@ dependencies {
     implementation("com.diffplug.spotless:spotless-plugin-gradle:6.9.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("javax.inject:javax.inject:1")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework:spring-jdbc:5.3.22")
     implementation("org.flywaydb:flyway-core:8.5.13")
     implementation("org.postgresql:postgresql:42.4.2")

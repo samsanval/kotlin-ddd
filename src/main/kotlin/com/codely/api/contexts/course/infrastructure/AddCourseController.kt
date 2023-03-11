@@ -29,7 +29,7 @@ class AddCourseController(private val courseHandler: CreateCourseHandler) {
 
                 else -> ResponseEntity
                         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body("Something went bad")
+                        .body(exception.message)
             }
         }
     }
